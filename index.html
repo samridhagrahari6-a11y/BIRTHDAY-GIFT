@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday Divya ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", Arial, sans-serif;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+      color: white;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Main container */
+    .container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page {
+      position: absolute;
+      inset: 0;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+      text-align: center;
+      animation: fadeIn 0.7s ease;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .content {
+      width: 100%;
+      max-width: 650px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 10vw, 5rem);
+      margin-bottom: 15px;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 7vw, 3.5rem);
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: clamp(1rem, 4vw, 1.25rem);
+      line-height: 1.8;
+    }
+
+    .emoji {
+      font-size: clamp(3rem, 15vw, 7rem);
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    /* Glass card */
+    .card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 25px;
+      padding: 30px 25px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+    }
+
+    /* Buttons */
+    button {
+      margin-top: 30px;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      background: white;
+      color: #e94f7c;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: 0.25s ease;
+    }
+
+    button:hover {
+      transform: scale(1.07);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    /* Page counter */
+    .counter {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      background: rgba(255,255,255,0.18);
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Special birthday text */
+    .birthday-name {
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .highlight {
+      color: #ffe4ec;
+      font-weight: bold;
+    }
+
+    /* Letter page */
+    .letter-card {
+      max-height: 78vh;
+      overflow-y: auto;
+      text-align: left;
+      padding: 25px;
+    }
+
+    .letter-card::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .letter-card::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.6);
+      border-radius: 10px;
+    }
+
+    .letter {
+      white-space: pre-line;
+      font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+      line-height: 1.8;
+    }
+
+    .signature {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    /* Final heart */
+    .big-heart {
+      font-size: 4rem;
+      animation: heartbeat 1.2s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      25% {
+        transform: scale(1.15);
+      }
+
+      50% {
+        transform: scale(1);
+      }
+
+      75% {
+        transform: scale(1.12);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 18px;
+      }
+
+      .card {
+        padding: 25px 18px;
+        border-radius: 20px;
+      }
+
+      button {
+        padding: 13px 24px;
+      }
+
+      .letter-card {
+        max-height: 75vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="counter">
+      <span id="pageNumber">1</span> / 7
+    </div>
+
+    <!-- PAGE 1 -->
+    <section class="page active">
+      <div class="content">
+        <div class="emoji">🎂</div>
+
+        <div class="card">
+          <h1>Happy Birthday</h1>
+
+          <h2 class="birthday-name">Divya ❤️</h2>
+
+          <p>
+            Today isn't just another day...
+            <br>
+            It's the day someone very special was born. ✨
+          </p>
+
+          <button onclick="nextPage()">
+            Open Your Surprise 💌
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PAGE 2 -->
+    <section class="page">
+      <div class="content">
+        <div class="emoji">🌸</div>
+
+        <div class="card">
+          <h2>For Someone Special...</h2>
+
+          <p>
+            Some people enter our lives randomly,
+            but somehow become a very important
+            part of our story.
+            <br><br>
+            And you, Divya,
+            are one of those people. ❤️
+          </p>
+
+          <button onclick="nextPage()">
+            Continue ❤️
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PAGE 3 -->
+    <section class="page">
+      <div class="content">
+        <div class="emoji">✨</div>
+
+        <div class="card">
+          <h2>My Birthday Wish For You</h2>
+
+          <p>
+            May you always have reasons to smile.
+            <br><br>
+            May every dream you carry in your heart
+            slowly turn into reality.
+            <br><br>
+            And may life always give you
+            happiness, peace and lots of love. 🌷
+          </p>
+
+          <button onclick="nextPage()">
+            There's More 💕
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PAGE 4 -->
+    <section class="page">
+      <div class="content">
+        <div class="emoji">🥹❤️</div>
+
+        <div class="card">
+          <h2>One Little Thing...</h2>
+
+          <p>
+            Distance may keep people apart physically,
+            but it doesn't have to make someone
+            less important.
+            <br><br>
+            So even though we're far away,
+            I wanted to make something
+            especially for you.
+          </p>
+
+          <button onclick="nextPage()">
+            Keep Going 🌹
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PAGE 5 -->
+    <section class="page">
+      <div class="content">
+        <div class="emoji">🎁</div>
+
+        <div class="card">
+          <h2>A Small Reminder</h2>
+
+          <p>
+            You deserve to be celebrated.
+            <br><br>
+            Not only today,
+            but on all the ordinary days too.
+            <br><br>
+            Never forget how special
+            you are to the people who love you. ❤️
+          </p>
+
+          <button onclick="nextPage()">
+            Almost There... 👀
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PAGE 6 -->
+    <section class="page">
+      <div class="content">
+        <div class="emoji">💖</div>
+
+        <div class="card">
+          <h2>Before You Read The Last Page...</h2>
+
+          <p>
+            I wrote something for you.
+            <br><br>
+            It isn't perfect.
+            It isn't fancy.
+            <br><br>
+            It's simply a few words
+            straight from my heart.
+          </p>
+
+          <button onclick="nextPage()">
+            Read My Letter 💌
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PAGE 7 - LETTER -->
+    <section class="page">
+      <div class="content">
+
+        <div class="card letter-card">
+
+          <div class="big-heart">❤️</div>
+
+          <h2 style="text-align:center;">
+            Dear Divya,
+          </h2>
+
+          <div class="letter">
+
+Hi Divya,
+
+Sorry for not doing something extra on your birthday as we are far away, but this was something I felt I should do and I wanted to for you.
+
+Being with you feels like being with a person who is handsome, sexy, caring, intelligent — a man one can have, and indeed I am so lucky to even meet a person like you.
+
+You are all to me like a brother, father, mentor, teacher and a full-in-one package. ❤️
+
+Mahadev kare ki tumko sab mile and tum humesha khush raho. Tum mere dil ho aur sab kuch ho.
+
+I wish you never forget me ever, even after your marriage. 🥹❤️
+
+Lastly...
+
+Kissessssss to you 💋
+and lots and lots of love. ❤️
+
+          </div>
+
+          <div class="signature">
+            Happy Birthday, Divya! 🎂❤️
+            <br><br>
+            Always keep smiling. ✨
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+
+  <script>
+
+    let currentPage = 0;
+
+    const pages = document.querySelectorAll(".page");
+    const pageNumber = document.getElementById("pageNumber");
+
+    function nextPage() {
+
+      if (currentPage < pages.length - 1) {
+
+        pages[currentPage].classList.remove("active");
+
+        currentPage++;
+
+        pages[currentPage].classList.add("active");
+
+        pageNumber.textContent = currentPage + 1;
+
+      }
+
+    }
+
+
+    /* Create floating hearts */
+
+    function createHeart() {
+
+      const heart = document.createElement("div");
+
+      heart.classList.add("heart");
+
+      const hearts = ["❤️", "💕", "💗", "💖", "💘"];
+
+      heart.innerHTML =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+
+      heart.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+      heart.style.fontSize =
+        (15 + Math.random() * 20) + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+
+    setInterval(createHeart, 500);
+
+
+    /* Small birthday celebration on final page */
+
+    function celebration() {
+
+      for (let i = 0; i < 25; i++) {
+
+        setTimeout(() => {
+          createHeart();
+        }, i * 100);
+
+      }
+
+    }
+
+
+    /* Trigger celebration when page 7 opens */
+
+    const originalNextPage = nextPage;
+
+    nextPage = function() {
+
+      originalNextPage();
+
+      if (currentPage === 6) {
+        celebration();
+      }
+
+    };
+
+  </script>
+
+</body>
+</html>
